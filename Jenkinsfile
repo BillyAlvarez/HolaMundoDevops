@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven 3.9.8'  // Asegúrate de que el nombre coincida con el que configuraste en Jenkins
+        maven 'maven 3.9.8'  // Asegúrate de que el nombre coincida con el que configuraste en Jenkins
     }
     stages {
         stage('Build') {
