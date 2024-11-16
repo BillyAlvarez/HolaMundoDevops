@@ -1,41 +1,23 @@
 pipeline {
-    agent any
-
-    tools {
-        maven 'maven 3.9.8' // Configurado en Jenkins
-        jdk 'java 11'      // Configurado en Jenkins
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'Clonando el repositorio...'
-                git 'hhttps://github.com/BillyAlvarez/HolaMundoDevops.git'
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'Compilando la aplicación con Maven...'
-                sh 'mvn clean package'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Ejecutando pruebas unitarias...'
-                sh 'mvn test'
-            }
-        }
-        stage('Docker Build') {
-            steps {
-                echo 'Construyendo la imagen Docker...'
-                sh 'docker build -t java-app:latest .'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Desplegando el contenedor Docker...'
-                sh 'docker run -d -p 8080:8080 java-app:latest'
-            }
-        }
-    }
-}
+ agent any
+ stages {
+ stage('Build') {
+ steps {
+ // Compila el proyecto Java utilizando Maven
+ sh 'mvn clean package'
+ }
+ }
+ stage('Test') {
+ steps {
+ // Ejecuta las pruebas unitarias
+ sh 'mvn test'
+ }
+ }
+ stage('Deploy') {
+ steps {
+ // Construye la imagen Docker y la ejecuta localmente
+ sh 'docker build -t myapp .'
+ sh 'docker run -d -p 8080:8080 myapp'
+ }
+ }
+ }
