@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn clean package'  // Usamos 'bat' en Windows para ejecutar Maven
+                bat 'mvn clean package'  // Usamos 'bat' en Windows para ejecutar Mavenn
             }
         }
         stage('Test') {
