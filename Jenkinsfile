@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Clonando el repositorio...'
-                git 'https://github.com/tu-usuario/tu-repo.git'
+                git 'hhttps://github.com/BillyAlvarez/HolaMundoDevops.git'
             }
         }
         stage('Build') {
